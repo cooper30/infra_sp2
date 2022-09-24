@@ -7,6 +7,7 @@ services:
       - /var/lib/postgresql/data/
     env_file:
       - ./.env
+
   web:
     build: ../api_yamdb
     restart: always
@@ -16,6 +17,7 @@ services:
       - db
     env_file:
       - ./.env
+
   nginx:
     image: nginx:1.21.3-alpine
     ports:
@@ -25,5 +27,6 @@ services:
       - static_value:/var/html/static/
     depends_on:
       - web
+
 volumes:
   static_value:
